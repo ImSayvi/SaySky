@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/config/config.php';
+var_dump($_GET);
+
 
 // Dane startowe - w prawdziwej aplikacji przyszłyby np. z bazy danych.
 $skyStatus = [
@@ -250,6 +252,7 @@ $weatherForecast = getWeatherForecast();
 <script src="assets/js/stars.js"></script>
 <script src="assets/js/filters.js"></script>
 <script src="assets/js/map.js"></script>
+<script src="assets/js/geolocation.js"></script>
 <?php if (GOOGLE_MAPS_API_KEY !== 'YOUR_API_KEY'): ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?= urlencode(GOOGLE_MAPS_API_KEY) ?>&callback=initMap" async defer></script>
 <?php endif; ?>
