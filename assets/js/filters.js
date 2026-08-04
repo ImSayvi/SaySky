@@ -22,15 +22,33 @@
   elevation.addEventListener('input', updateElevationFill);
   updateElevationFill();
 
-  const bortleGroup = document.getElementById('bortleGroup');
+  const bortle = document.getElementById('bortle');
   const bortleVal = document.getElementById('bortleVal');
-  bortleGroup.addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
-    if (!btn) return;
-    bortleGroup.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    bortleVal.textContent = btn.textContent;
-  });
+  const bortleHint = document.getElementById('bortleHint');
+  const BORTLE_HINTS = {
+    1: 'Niebo idealnie ciemne - Droga Mleczna rzuca cień.',
+    2: 'Typowe ciemne niebo wiejskie.',
+    3: 'Niebo wiejskie - wyraźnie widoczna Droga Mleczna.',
+    4: 'Niebo wiejskie/podmiejskie - lekka poświata przy horyzoncie.',
+    5: 'Niebo podmiejskie - poświata widoczna w kilku kierunkach.',
+    6: 'Jasne niebo podmiejskie.',
+    7: 'Przejście miasto/przedmieścia.',
+    8: 'Niebo miejskie - widoczne tylko najjaśniejsze obiekty.',
+    9: 'Centrum dużego miasta - obserwacje mocno ograniczone.'
+  };
+  // Te same kolory co przystanki gradientu w style.css (.bortle-slider),
+  // żeby obrys kciuka zawsze pasował do miejsca, w którym aktualnie jest.
+  const BORTLE_COLORS = ['#2C6E63', '#4FA98F', '#6FE9D6', '#9FD98A', '#D9DD6E', '#F3D968', '#F3B968', '#E8794F', '#D95C5C'];
+  function updateBortle() {
+    const v = Number(bortle.value);
+    bortleVal.textContent = v;
+    bortleHint.textContent = BORTLE_HINTS[v] || '';
+    const color = BORTLE_COLORS[v - 1];
+    bortle.style.setProperty('--thumb-color', color);
+    bortle.style.setProperty('--thumb-glow', color + '40'); // lekka poświata w kolorze strefy
+  }
+  bortle.addEventListener('input', updateBortle);
+  updateBortle();
 
   const areaGroup = document.getElementById('areaGroup');
   areaGroup.addEventListener('click', (e) => {
@@ -44,7 +62,7 @@
     const filters = {
       radiusKm: Number(radius.value),
       minElevationM: Number(elevation.value),
-      maxBortle: Number(bortleGroup.querySelector('.active').dataset.v),
+      maxBortle: Number(bortle.value),
       areaType: areaGroup.querySelector('.active').dataset.v
     };
 

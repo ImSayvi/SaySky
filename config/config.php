@@ -16,3 +16,10 @@ define('GOOGLE_MAPS_API_KEY', getenv('GOOGLE_MAPS_API_KEY') ?: 'YOUR_API_KEY');
 define('DEFAULT_MAP_CENTER_LAT', 52.2297); // Warszawa
 define('DEFAULT_MAP_CENTER_LNG', 21.0122);
 define('DEFAULT_MAP_ZOOM', 8);
+
+/**
+ * Klucz do API pogodowego (np. OpenWeatherMap, Visual Crossing).
+ * Dopóki nie zostanie ustawiony, sekcja prognozy pokazuje dane przykładowe
+ * zwracane przez getWeatherForecast() w index.php.
+ */
+define('WEATHER_API_KEY', getenv('WEATHER_API_KEY') ?: '');
