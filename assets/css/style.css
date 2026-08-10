@@ -166,7 +166,7 @@ input[type="range"]::-moz-range-thumb{
 
 /* skala Bortle'a — gradientowy slider od nieba ciemnego do miejskiego
    9 wartości = przystanki co 12.5%, dokładnie tam gdzie ląduje kciuk */
-.bortle-slider{
+input[type="range"].bortle-slider{
   -webkit-appearance: none;
   width: 100%;
   height: 8px;
@@ -184,7 +184,7 @@ input[type="range"]::-moz-range-thumb{
     #D95C5C 100%      /* 9 */
   );
 }
-.bortle-slider::-webkit-slider-thumb{
+input[type="range"].bortle-slider::-webkit-slider-thumb{
   -webkit-appearance:none;
   width:18px; height:18px; border-radius:50%;
   background: var(--bg-deep);
@@ -193,7 +193,7 @@ input[type="range"]::-moz-range-thumb{
   box-shadow: 0 0 0 4px var(--thumb-glow, rgba(232,234,246,0.15));
   transition: border-color .1s ease, box-shadow .1s ease;
 }
-.bortle-slider::-moz-range-thumb{
+input[type="range"].bortle-slider::-moz-range-thumb{
   width:18px; height:18px; border-radius:50%;
   background: var(--bg-deep);
   border: 3px solid var(--thumb-color, var(--text));

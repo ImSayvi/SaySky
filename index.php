@@ -1,6 +1,20 @@
 <?php
 require_once __DIR__ . '/config/config.php';
-var_dump($_GET);
+
+$validator = new Validator();
+
+if(!empty($_GET)){
+  $validator->clearErrors();
+  $filters = $validator->checkGetForFilters($_GET);
+  if($validator->hasErrors()){
+    $errors = $validator->getErrors();
+    print_r($errors);
+  } else {
+    echo "<script>alert('Filtry zostały zastosowane poprawnie.');</script>";
+  }
+}
+
+
 
 
 // Dane startowe - w prawdziwej aplikacji przyszłyby np. z bazy danych.
@@ -93,7 +107,7 @@ $weatherForecast = getWeatherForecast();
               <label for="radius">Promień szukania</label>
               <span class="val" id="radiusVal">25 km</span>
             </div>
-            <input type="range" name="radius" id="radius" min="5" max="150" step="5" value="25">
+            <input type="range" name="radius" id="radius" min="5" max="150" step="5" value="<?= isset($filters['radius']) ? htmlspecialchars($filters['radius']) : 25 ?>">
             <p class="hint">Miejsca w tej odległości od Twojej lokalizacji.</p>
           </div>
         </div>
@@ -105,7 +119,7 @@ $weatherForecast = getWeatherForecast();
               <label for="elevation">Minimalna wysokość n.p.m.</label>
               <span class="val" id="elevationVal">150 m</span>
             </div>
-            <input type="range" name="elevation" id="elevation" min="0" max="1500" step="50" value="150">
+            <input type="range" name="elevation" id="elevation" min="0" max="1500" step="50" value="<?= isset($filters['elevation']) ? htmlspecialchars($filters['elevation']) : 150 ?>">
             <p class="hint">Wyżej = mniej mgły i poświaty przy horyzoncie.</p>
           </div>
         </div>
@@ -117,7 +131,7 @@ $weatherForecast = getWeatherForecast();
               <label for="bortle">Maks. na skali Bortle'a</label>
               <span class="val" id="bortleVal">4</span>
             </div>
-            <input type="range" name="bortle" id="bortle" class="bortle-slider" min="1" max="9" step="1" value="4">
+            <input type="range" name="bortle" id="bortle" class="bortle-slider" min="1" max="9" step="1" value="<?= isset($filters['bortle']) ? htmlspecialchars($filters['bortle']) : 4 ?>">
             <div class="bortle-ticks">
               <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
             </div>

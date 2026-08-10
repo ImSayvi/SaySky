@@ -1,7 +1,5 @@
 <?php
 /**
- * Konfiguracja aplikacji "Ciemnia".
- *
  * Klucz Google Maps API najlepiej trzymać poza repozytorium
  * (np. jako zmienną środowiskową GOOGLE_MAPS_API_KEY na serwerze),
  * dlatego najpierw próbujemy odczytać ją z środowiska, a dopiero
@@ -23,3 +21,8 @@ define('DEFAULT_MAP_ZOOM', 8);
  * zwracane przez getWeatherForecast() w index.php.
  */
 define('WEATHER_API_KEY', getenv('WEATHER_API_KEY') ?: '');
+
+// autoloader
+spl_autoload_register(function ($class) {
+    require_once __DIR__ . '/../lib/' . $class . '.php';
+});

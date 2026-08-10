@@ -46,6 +46,7 @@
     const color = BORTLE_COLORS[v - 1];
     bortle.style.setProperty('--thumb-color', color);
     bortle.style.setProperty('--thumb-glow', color + '40'); // lekka poświata w kolorze strefy
+    bortle.style.setProperty('--fill', ((v - bortle.min) / (bortle.max - bortle.min) * 100) + '%');
   }
   bortle.addEventListener('input', updateBortle);
   updateBortle();
