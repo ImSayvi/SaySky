@@ -6,6 +6,7 @@ services:
       - "8080:80"            # strona dostępna pod http://localhost:8080
     volumes:
       - .:/var/www           # kod podpięty na żywo: edytujesz lokalnie, zmiany od razu w kontenerze
+      #volumes to bind (kropka jest istotna,czyli tam gdzie leży compose); bez tego folder powstałby tylko w kontenerze i zniknął by po docker compose down
 
   # Baza danych
   db:
