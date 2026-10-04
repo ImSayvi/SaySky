@@ -1,0 +1,28 @@
+services:
+  # Aplikacja: PHP + Apache z Dockerfile
+  app:
+    build: .
+    ports:
+      - "8080:80"            # strona dostępna pod http://localhost:8080
+    volumes:
+      - .:/var/www           # kod podpięty na żywo: edytujesz lokalnie, zmiany od razu w kontenerze
+
+  # Baza danych
+  db:
+    image: mariadb:10.11
+    environment:
+      MARIADB_DATABASE: app
+      MARIADB_USER: app
+      MARIADB_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql   # dane bazy przetrwają restart i usunięcie kontenera
+
+  # Podgląd bazy w przeglądarce
+  adminer:
+    image: adminer
+    ports:
+      - "8081:8080"          # http://localhost:8081, serwer: db
+
+volumes:
+  db_data:
