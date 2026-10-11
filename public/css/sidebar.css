@@ -134,11 +134,15 @@ input[type="range"].bortle-slider::-moz-range-thumb{
 .area-card svg{ width:22px; height:22px; stroke: var(--text-muted); transition: stroke .15s ease; }
 .area-card span{ font-size: 11.5px; color: var(--text-muted); font-weight:600; text-align:center; }
 .area-card:hover{ border-color: var(--violet); }
-.area-card.active{
+/* checkbox schowany wizualnie, ale dalej dostępny z klawiatury */
+.area-card input{ position:absolute; opacity:0; pointer-events:none; }
+.area-card{ position:relative; }
+.area-card:has(input:focus-visible){ outline: 2px solid var(--violet); outline-offset: 2px; }
+.area-card:has(input:checked){
   background: rgba(142,143,224,0.14);
   border-color: var(--violet);
 }
-.area-card.active svg, .area-card.active span{ stroke: var(--violet); color: var(--violet); }
+.area-card:has(input:checked) svg, .area-card:has(input:checked) span{ stroke: var(--violet); color: var(--violet); }
 
 .apply-btn{
   margin-top: 6px;

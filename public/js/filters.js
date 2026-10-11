@@ -51,14 +51,9 @@
   bortle.addEventListener('input', updateBortle);
   updateBortle();
 
-  // Karty typu obszaru to nie pola formularza, więc wybór trafia do ukrytego inputa "area".
+  // Typ obszaru to checkboxy area[] — nie pozwalamy odznaczyć ostatniego zaznaczonego.
   const areaGroup = document.getElementById('areaGroup');
-  const areaInput = document.getElementById('area');
-  areaGroup.addEventListener('click', (e) => {
-    const card = e.target.closest('.area-card');
-    if (!card) return;
-    areaGroup.querySelectorAll('.area-card').forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-    areaInput.value = card.dataset.v;
+  areaGroup.addEventListener('change', (e) => {
+    if (!areaGroup.querySelector('input:checked')) e.target.checked = true;
   });
 })();
