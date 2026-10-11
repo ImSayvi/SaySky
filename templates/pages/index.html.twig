@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/map.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/map-toolbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/result-card.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/weather.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/filters.js') }}" defer></script>
+    <script src="{{ asset('js/geolocation.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="app">
+
+  <div class="layout">
+
+    {% include 'components/_sidebar.html.twig' %}
+
+    {% include 'components/_map.html.twig' %}
+
+  </div>
+
+  {% include 'components/_weather.html.twig' %}
+
+</div>
+{% endblock %}

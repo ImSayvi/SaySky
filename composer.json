@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "symfony/apache-pack": "*",
+        "symfony/asset": "8.1.*",
         "symfony/console": "8.1.*",
         "symfony/dotenv": "8.1.*",
         "symfony/flex": "^2",
@@ -72,6 +73,7 @@
     },
     "require-dev": {
         "symfony/debug-bundle": "8.1.*",
+        "symfony/maker-bundle": "^1.68",
         "symfony/monolog-bundle": "^3.0|^4.0",
         "symfony/stopwatch": "8.1.*",
         "symfony/web-profiler-bundle": "8.1.*"

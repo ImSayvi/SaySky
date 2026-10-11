@@ -1,0 +1,9 @@
+{% if nearestSpot is defined %}
+<div class="result-card">
+    <h3>Najbliższe miejsce</h3>
+    <div class="result-row"><span>Odległość</span><b>{{ nearestSpot.distance_km|round }} km</b></div>
+    <div class="result-row"><span>Wysokość</span><b>{{ nearestSpot.elevation_m|round }} m n.p.m.</b></div>
+    <div class="result-row"><span>Bortle</span><b>{{ nearestSpot.bortle }}</b></div>
+    <div class="result-row"><span>Teren</span><b>{{ nearestSpot.area_type }}</b></div>
+</div>
+{% endif %}

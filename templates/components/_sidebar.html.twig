@@ -1,0 +1,68 @@
+{% set query = app.request.query %}
+{% set area = query.get('area', 'pole') %}
+    <aside>
+      <form action="" method="get" id="filtersForm">
+        <div>
+          <div class="section-label">Zasięg</div>
+          <div class="field">
+            <div class="field-head">
+              <label for="radius">Promień szukania</label>
+              <span class="val" id="radiusVal">25 km</span>
+            </div>
+            <input type="range" name="radius" id="radius" min="5" max="150" step="5" value="{{ query.getInt('radius', 25) }}">
+            <p class="hint">Miejsca w tej odległości od Twojej lokalizacji.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Teren</div>
+          <div class="field">
+            <div class="field-head">
+              <label for="elevation">Minimalna wysokość n.p.m.</label>
+              <span class="val" id="elevationVal">150 m</span>
+            </div>
+            <input type="range" name="elevation" id="elevation" min="0" max="1500" step="50" value="{{ query.getInt('elevation', 150) }}">
+            <p class="hint">Wyżej = mniej mgły i poświaty przy horyzoncie.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Zanieczyszczenie światłem</div>
+          <div class="field">
+            <div class="field-head">
+              <label for="bortle">Maks. na skali Bortle'a</label>
+              <span class="val" id="bortleVal">4</span>
+            </div>
+            <input type="range" name="bortle" id="bortle" class="bortle-slider" min="1" max="9" step="1" value="{{ query.getInt('bortle', 4) }}">
+            <div class="bortle-ticks">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+            </div>
+            <p class="hint" id="bortleHint">Niebo wiejskie - wyraźnie widoczna Droga Mleczna.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="section-label">Typ obszaru</div>
+          <div class="area-grid" id="areaGroup">
+            <div class="area-card{{ area == 'pole' ? ' active' }}" data-v="pole">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M3 19h18M4 19c0-4 2-7 3-9M9 19c0-5 1-9 3-11M14 19c1-4 2-7 3-9M19 19c-1-4-2-7-1-11"/></svg>
+              <span>Pole</span>
+            </div>
+            <div class="area-card{{ area == 'las' ? ' active' }}" data-v="las">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M12 2 7 10h3l-4 6h5v6h2v-6h5l-4-6h3z"/></svg>
+              <span>Las</span>
+            </div>
+            <div class="area-card{{ area == 'woda' ? ' active' }}" data-v="woda">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round"><path d="M3 16c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0M3 20c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0"/><circle cx="12" cy="7" r="3"/></svg>
+              <span>Zbiornik wodny</span>
+            </div>
+          </div>
+        </div>
+
+        <input type="hidden" name="area" id="area" value="{{ area }}">
+        <input type="hidden" name="lat" id="lat" value="{{ query.get('lat') }}">
+        <input type="hidden" name="lng" id="lng" value="{{ query.get('lng') }}">
+
+        <button type="submit" class="apply-btn" id="applyBtn">Znajdź miejsca obserwacji</button>
+      </form>
+    </aside>

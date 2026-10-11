@@ -1,0 +1,16 @@
+    <main>
+
+      {% include 'components/map/_map-toolbar.html.twig' %}
+
+      <div id="map-wrap">
+        <div id="map"></div>
+        <div class="map-fallback" id="mapFallback">
+          <div class="radius-ring"><div class="pin"></div></div>
+          <div class="fallback-note">
+            Podgląd mapy. Prawdziwa mapa pojawi się po podpięciu Symfony UX Map.
+          </div>
+        </div>
+
+        {% include 'components/map/_result-card.html.twig' %}
+      </div>
+    </main>

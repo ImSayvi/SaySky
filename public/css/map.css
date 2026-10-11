@@ -1,0 +1,56 @@
+/* ---------- MAIN / MAP ---------- */
+main{
+  position: relative;
+  display:flex; flex-direction:column;
+  min-width:0;
+}
+
+
+
+#map-wrap{
+  position: relative;
+  flex:1;
+  min-height: 420px;
+  overflow:hidden;
+}
+#map{ width:100%; height:100%; }
+
+/* fallback placeholder map (shown until a real Google Maps API key is supplied) */
+.map-fallback{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 62% 42%, rgba(111,233,214,0.14), transparent 45%),
+    repeating-linear-gradient(0deg, rgba(232,234,246,0.05) 0px, rgba(232,234,246,0.05) 1px, transparent 1px, transparent 46px),
+    repeating-linear-gradient(90deg, rgba(232,234,246,0.05) 0px, rgba(232,234,246,0.05) 1px, transparent 1px, transparent 46px),
+    var(--bg-deep-2);
+  display:flex; align-items:center; justify-content:center;
+}
+.radius-ring{
+  position:absolute;
+  width: 300px; height: 300px;
+  border-radius:50%;
+  border: 1px dashed rgba(111,233,214,0.4);
+  background: radial-gradient(circle, rgba(111,233,214,0.08), transparent 70%);
+  left: 62%; top: 42%;
+  transform: translate(-50%,-50%);
+  display:flex; align-items:center; justify-content:center;
+}
+.pin{
+  width:14px; height:14px; border-radius:50% 50% 50% 0;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 14px 2px rgba(243,185,104,0.6);
+}
+.fallback-note{
+  position:absolute; bottom: 22px; left:50%; transform:translateX(-50%);
+  font-size: 11.5px; color: var(--text-faint);
+  background: rgba(8,11,31,0.7);
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid var(--line);
+  text-align:center; max-width: 480px;
+}
+.fallback-note code{ color: var(--teal); }
+
+
+::-webkit-scrollbar{ width:8px; }
+::-webkit-scrollbar-thumb{ background: var(--line-strong); border-radius: 4px; }

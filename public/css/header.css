@@ -1,0 +1,40 @@
+/* ---------- HEADER ---------- */
+header{
+  display:flex; align-items:center; justify-content: space-between;
+  padding: 22px 36px;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(2px);
+}
+.brand{
+  display:flex; align-items:center; gap:14px;
+}
+.brand svg{ width:30px; height:30px; flex-shrink:0; }
+.brand-text h1{
+  font-family:'Fraunces', serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin:0;
+  line-height:1.1;
+}
+.brand-text span{
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: 0.4px;
+}
+
+.sky-status{
+  display:flex; align-items:center; gap:10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 7px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+}
+.sky-status .dot{
+  width:8px; height:8px; border-radius:50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px 1px var(--teal);
+}
+.sky-status b{ color: var(--text); font-weight:600; }
